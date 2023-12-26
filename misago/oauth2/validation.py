@@ -49,7 +49,7 @@ def filter_user_data(request, user, user_data):
 def filter_user_data_action(request, user, user_data):
     return {
         "id": user_data["id"],
-        "name": filter_name(user, user_data["name"] or ""),
+        "name": filter_name(user, user_data.get("username", user_data["name"]) or ""),
         "email": user_data["email"] or "",
         "avatar": user_data["avatar"],
     }
@@ -57,7 +57,8 @@ def filter_user_data_action(request, user, user_data):
 
 def filter_user_data_with_filters(request, user, user_data, filters):
     for filter_user_data in filters:
-        user_data = filter_user_data(request, user, user_data.copy()) or user_data
+        user_data = filter_user_data(
+            request, user, user_data.copy()) or user_data
     return user_data
 
 
@@ -66,7 +67,8 @@ def filter_name(user, name):
         return name
 
     clean_name = "".join(
-        [c for c in unidecode(name.replace(" ", "_")) if c.isalnum() or c == "_"]
+        [c for c in unidecode(name.replace(" ", "_"))
+         if c.isalnum() or c == "_"]
     )
 
     if user and user.username == clean_name:

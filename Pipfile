@@ -1,0 +1,38 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+ariadne = "*"
+ariadne-django = "*"
+black = "*"
+celery = {extras = ["redis"], version = "*"}
+coveralls = "*"
+django = "~=4.2"
+djangorestframework = "*"
+django-debug-toolbar = "*"
+django-mptt = "*"
+django-simple-sso = "*"
+faker = "*"
+html5lib = "*"
+markdown = "*"
+social-auth-app-django = "*"
+pyjwt = "*"
+pillow = "*"
+psycopg = {extras = ["binary"], version = "*"}
+pytest = "*"
+pytest-cov = "*"
+pytest-django = "*"
+pytest-mock = "*"
+pytz = "*"
+requests = "*"
+responses = "*"
+ruff = "*"
+syrupy = "*"
+unidecode = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.12"
